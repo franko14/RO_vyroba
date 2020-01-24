@@ -63,7 +63,7 @@ func = 'AVERAGE'
 now = pd.Timestamp.now()
 today = now.floor('D')
 yesterday = today - pd.Timedelta(days=0)
-end = today + pd.Timedelta(days=15)
+end = today + pd.Timedelta(days=10)
 
 # create the first part of the curve name dependent on the category and region
 if category == 'con':
@@ -265,40 +265,47 @@ ens_df = ens_df.tz_localize(tz=None)
 
 # Create traces
 fig = go.Figure()
-fig.add_trace(go.Scatter(x=fc_order[0].index, y=fc_order[0].values,
+
+#fig['layout'].update(height=600, width=600, title='Subplots with Shared X-Axes')
+#go.FigureWidget(fig)
+
+fig.add_traces([
+                go.Scatter(x=fc_order[0].index, y=fc_order[0].values,
                     mode='lines',
                     line=go.scatter.Line(),
                     line_width=2,
                     line_color='darkred',
-                    name=fc_order[0].name))
-fig.add_trace(go.Scatter(x=fc_order[1].index, y=fc_order[1].values,
-                    mode='lines',
-                    line=go.scatter.Line(),
-                    line_width=2,
-                    line_color='darkblue',
-                    name=fc_order[1].name
-                    ))
-fig.add_trace(go.Scatter(x=fc_order[2].index, y=fc_order[2].values,
-                    mode='lines',
-                    line=go.scatter.Line(),
-                    line_width=3,
-                    line_color='red',
-                    name=fc_order[2].name))
-
-fig.add_trace(go.Scatter(x=normal.index, y=normal.values,
-                    mode='lines',
-                    line=go.scatter.Line(),
-                    line_width=1,
-                    line_color='brown',
-                    name='Normal'))
-
-fig.add_trace(go.Box(x=ens_df.index, y=(ens_df['value']),
-                    boxpoints='outliers',
-                    line_width=0.5,
-                    line_color='blue',
-                    opacity=0.5,
-                    name='ENS Spread',
-                    ))
+                    name=fc_order[0].name
+                    ),
+                go.Scatter(x=fc_order[1].index, y=fc_order[1].values,
+                        mode='lines',
+                        line=go.scatter.Line(),
+                        line_width=2,
+                        line_color='#0008ad',
+                        name=fc_order[1].name
+                        ),
+                go.Scatter(x=fc_order[2].index, y=fc_order[2].values,
+                        mode='lines',
+                        line=go.scatter.Line(),
+                        line_width=3,
+                        line_color='red',
+                        name=fc_order[2].name
+                        ),
+                go.Scatter(x=normal.index, y=normal.values,
+                        mode='lines',
+                        line=go.scatter.Line(),
+                        line_width=1,
+                        line_color='brown',
+                        name='Normal'
+                        ),
+                go.Box(x=ens_df.index, y=(ens_df['value']),
+                                    boxpoints='outliers',
+                                    line_width=0.5,
+                                    line_color='blue',
+                                    opacity=0.5,
+                                    name='ENS Spread',
+                                    )
+                ])
 
 fig.update_layout(title={'text' : 'DE wind forecast',
                         #'y':0.9,
@@ -322,9 +329,24 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                 template = "plotly_white",
                 legend_orientation = "h",
                 legend_title = "Forecast",
-                legend =  dict(y=-1.2)
+                legend =  dict(y=-0.3),
+                shapes=[
+                go.layout.Shape(
+                                type = 'line',
+                                x0 = '2020-01-27 0:00',
+                                y0 = 0,
+                                x1 = '2020-01-27 0:00',
+                                #yref = 'paper',
+                                y1 = 50,
+                                line=dict(color = 'darkgreen', width=2),
+                                )]
+
                 )
 
-fig.update_xaxes(showgrid=True, gridwidth=1)
+
+fig.update_xaxes(showgrid=True, zeroline=True)
+fig.update_yaxes(range=[0,50],showgrid=True, zeroline=True)
+#fig.update_xaxes(showgrid=True, gridwidth=1)
+
 import plotly.io as pio
 pio.write_html(fig, file='index.html', auto_open=True)

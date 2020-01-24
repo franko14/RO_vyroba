@@ -262,14 +262,7 @@ ens_df.set_index('Datestr', inplace=True)
 #print (df['value'][df['value'] == 'EC00Ens_Avg'])
 ens_df = ens_df.sort_values(by=['ENS_run','Datestr'])
 ens_df = ens_df.tz_localize(tz=None)
-#ens_df = ens_df.drop(columns=ens_df.columns[0:2])
-#df.to_excel('ENSs.xlsx')
-"""
-print (last_ens)
-fig = px.line(df, x='Date', y='value', color='up')
-fig = px.line(df, x='Date', y='EC00Ens_Avg')
-fig.show()
-"""
+
 # Create traces
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=fc_order[0].index, y=fc_order[0].values,
@@ -304,7 +297,6 @@ fig.add_trace(go.Box(x=ens_df.index, y=(ens_df['value']),
                     line_width=0.5,
                     line_color='blue',
                     opacity=0.5,
-                    #mode='lines',
                     name='ENS Spread',
                     ))
 
@@ -313,7 +305,6 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                         'x' : 0.5,
                         'xanchor' : 'center',
                         'font' :  dict(
-                                    #amily="Arial, Black",
                                     size=30,
                                     color="#000000"
                                 )
@@ -324,7 +315,6 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                             #tickmode = 'auto',
                             dtick = 86400000.0,
                             tickfont =  dict(
-                                        #amily="Arial, Black",
                                         size=15,
                                         color="#000000"
                                     )
@@ -332,19 +322,9 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                 template = "plotly_white",
                 legend_orientation = "h",
                 legend_title = "Forecast",
-
-                #tick0 = 0.5,
-                #dtick = 0.75
+                legend =  dict(y=-1.2)
                 )
 
-#fig.add_trace(go.Scatter(x=df.index, y=df['value'][df['ENS_run'] == 'EC00Ens_Avg'],
-#                    mode='lines',
-#                    line=go.scatter.Line(),
-#                    line_width=3,
-#                    line_color='red',
-#                    name='EC00ENS Average'))
-
 fig.update_xaxes(showgrid=True, gridwidth=1)
-#fig.show()
 import plotly.io as pio
 pio.write_html(fig, file='index.html', auto_open=True)

@@ -241,8 +241,6 @@ else:
    last_ens = EC12Ens
    fc_order = [EC00Ens_avg, EC12, EC12Ens_avg]
 
-#print ()
-
 normal.name = 'Normal'
 #last_ens = last_ens
 last_ens.index.name = 'Date'
@@ -333,9 +331,9 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                 shapes=[
                 go.layout.Shape(
                                 type = 'line',
-                                x0 = '2020-01-27 0:00',
+                                x0 = '2020-02-03 0:00',
                                 y0 = 0,
-                                x1 = '2020-01-27 0:00',
+                                x1 = '2020-02-03 0:00',
                                 #yref = 'paper',
                                 y1 = 50,
                                 line=dict(color = 'darkgreen', width=2),

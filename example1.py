@@ -334,7 +334,7 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                                 x0 = '2020-02-03 0:00',
                                 y0 = 0,
                                 x1 = '2020-02-03 0:00',
-                                #yref = 'paper',
+                                #yref  = 'paper',
                                 y1 = 50,
                                 line=dict(color = 'darkgreen', width=2),
                                 )]

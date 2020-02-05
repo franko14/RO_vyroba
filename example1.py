@@ -62,8 +62,8 @@ func = 'AVERAGE'
 # get current dates and timeranges to get data
 now = pd.Timestamp.now()
 today = now.floor('D')
-yesterday = today - pd.Timedelta(days=-1)
-end = today + pd.Timedelta(days=15)
+yesterday = today - pd.Timedelta(days=0)
+end = today + pd.Timedelta(days=10)
 
 # create the first part of the curve name dependent on the category and region
 if category == 'con':
@@ -358,7 +358,7 @@ import plotly.io as pio
 pio.write_html(fig, file='index.html', auto_open=False)
 
 from git import Repo
-today_date = '5.2.2020'
+today_date = '5.2.2020_2'
 PATH_OF_GIT_REPO = r'F:\SEAS\WattsightAPI\DE_vyroba\.git'  # make sure .git folder is properly configured
 COMMIT_MESSAGE = f'{today_date} update'
 

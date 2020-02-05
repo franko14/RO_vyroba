@@ -62,7 +62,7 @@ func = 'AVERAGE'
 # get current dates and timeranges to get data
 now = pd.Timestamp.now()
 today = now.floor('D')
-yesterday = today - pd.Timedelta(days=0)
+yesterday = today - pd.Timedelta(days=-1)
 end = today + pd.Timedelta(days=15)
 
 # create the first part of the curve name dependent on the category and region

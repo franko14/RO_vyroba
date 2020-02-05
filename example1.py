@@ -355,4 +355,21 @@ fig.update_yaxes(range=[0,50],showgrid=True, zeroline=True)
 #fig.update_xaxes(showgrid=True, gridwidth=1)
 
 import plotly.io as pio
-pio.write_html(fig, file='index.html', auto_open=True)
+pio.write_html(fig, file='index.html', auto_open=False)
+
+from git import Repo
+today_date = '5.2.2020'
+PATH_OF_GIT_REPO = r'F:\SEAS\WattsightAPI\DE_vyroba\.git'  # make sure .git folder is properly configured
+COMMIT_MESSAGE = f'{today_date} update'
+
+def git_push():
+    try:
+        repo = Repo(PATH_OF_GIT_REPO)
+        repo.git.add(update=True)
+        repo.index.commit(COMMIT_MESSAGE)
+        origin = repo.remote(name='origin')
+        origin.push()
+    except:
+        print('Some error occured while pushing the code')
+
+git_push()

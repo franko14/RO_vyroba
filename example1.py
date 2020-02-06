@@ -33,7 +33,7 @@ my_config_file = 'config.ini'
 # Choose one of the available regions by using its abbreviation
 # as shown on the top of each wattsight page
 # (eg https://app.wattsight.com/#tab/power/135/2)
-region = 'de'
+region = 'ro'
 
 # choose one of the four possible categories for this plot:
 # 'con' for Consumption
@@ -359,7 +359,7 @@ pio.write_html(fig, file='index.html', auto_open=False)
 
 from git import Repo
 today_date = '6.2.2020'
-PATH_OF_GIT_REPO = r'F:\SEAS\WattsightAPI\DE_vyroba\.git'  # make sure .git folder is properly configured
+PATH_OF_GIT_REPO = r'F:\SEAS\WattsightAPI\RO_vyroba\.git'  # make sure .git folder is properly configured
 COMMIT_MESSAGE = f'{today_date} update'
 
 def git_push():

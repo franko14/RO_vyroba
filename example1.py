@@ -335,7 +335,7 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                                 y0 = 0,
                                 x1 = '2020-02-10 0:00',
                                 #yref  = 'paper',
-                                y1 = 50,
+                                y1 = 10,
                                 line=dict(color = 'darkgreen', width=2),
                                 ),
                 go.layout.Shape(
@@ -344,14 +344,14 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                                 y0 = 0,
                                 x1 = '2020-02-17 0:00',
                                 #yref  = 'paper',
-                                y1 = 50,
+                                y1 = 10,
                                 line=dict(color = 'darkgreen', width=2),
                                 )]
                 )
 
 
 fig.update_xaxes(showgrid=True, zeroline=True)
-fig.update_yaxes(range=[0,50],showgrid=True, zeroline=True)
+fig.update_yaxes(range=[0,10],showgrid=True, zeroline=True)
 #fig.update_xaxes(showgrid=True, gridwidth=1)
 
 import plotly.io as pio

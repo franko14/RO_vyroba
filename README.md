@@ -1,2 +1,2 @@
-# DE_vyroba
-DE wind production Wattsight
+# RO_vyroba
+RO wind production Wattsight

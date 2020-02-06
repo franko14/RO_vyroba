@@ -305,7 +305,7 @@ fig.add_traces([
                                     )
                 ])
 
-fig.update_layout(title={'text' : 'DE wind forecast',
+fig.update_layout(title={'text' : 'RO wind forecast',
                         #'y':0.9,
                         'x' : 0.5,
                         'xanchor' : 'center',
@@ -335,7 +335,7 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                                 y0 = 0,
                                 x1 = '2020-02-10 0:00',
                                 #yref  = 'paper',
-                                y1 = 10,
+                                y1 = 5,
                                 line=dict(color = 'darkgreen', width=2),
                                 ),
                 go.layout.Shape(
@@ -344,14 +344,14 @@ fig.update_layout(title={'text' : 'DE wind forecast',
                                 y0 = 0,
                                 x1 = '2020-02-17 0:00',
                                 #yref  = 'paper',
-                                y1 = 10,
+                                y1 = 5,
                                 line=dict(color = 'darkgreen', width=2),
                                 )]
                 )
 
 
 fig.update_xaxes(showgrid=True, zeroline=True)
-fig.update_yaxes(range=[0,10],showgrid=True, zeroline=True)
+fig.update_yaxes(range=[0,5],showgrid=True, zeroline=True)
 #fig.update_xaxes(showgrid=True, gridwidth=1)
 
 import plotly.io as pio

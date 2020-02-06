@@ -358,7 +358,7 @@ import plotly.io as pio
 pio.write_html(fig, file='index.html', auto_open=False)
 
 from git import Repo
-today_date = '6.2.2020'
+today_date = '6.2.2020_2'
 PATH_OF_GIT_REPO = r'F:\SEAS\WattsightAPI\RO_vyroba\.git'  # make sure .git folder is properly configured
 COMMIT_MESSAGE = f'{today_date} update'
 

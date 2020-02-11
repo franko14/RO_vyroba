@@ -30,7 +30,7 @@ session = wapi.Session(config_file=config_file_path)
 # Insert the path to your config file here!
 my_config_file = 'config.ini'
 
-# Choose one of the available regions by using its abbreviation
+# Choose one of the available regions bys using its abbreviation
 # as shown on the top of each wattsight page
 # (eg https://app.wattsight.com/#tab/power/135/2)
 region = 'ro'

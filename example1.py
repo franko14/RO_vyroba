@@ -1,13 +1,12 @@
 import wapi
 import plotly.express as px
-import pandas as pd
-import pandas as pd
-import numpy as np
-import plotly
 import plotly.graph_objects as go
+import plotly
 import warnings
-import numpy as np
 import github3
+import datetime
+import pandas as pd
+import os
 
 plotly_template = plotly.io.templates["plotly_white"]
 plotly_template.layout.xaxis.gridcolor = '#a7a7a7'
@@ -327,7 +326,7 @@ fig.update_layout(title={'text' : 'RO wind forecast',
                         ),
                 template = "plotly_white",
                 legend_orientation = "h",
-                legend_title = "Forecast",
+                #legend_title = "Forecast",
                 legend =  dict(y=-0.3),
                 shapes=[
                 go.layout.Shape(
@@ -359,8 +358,11 @@ import plotly.io as pio
 pio.write_html(fig, file='index.html', auto_open=False)
 
 from git import Repo
-today_date = '13.2.2020'
-PATH_OF_GIT_REPO = r'F:\SEAS\WattsightAPI\RO_vyroba\.git'  # make sure .git folder is properly configured
+
+today_date = datetime.datetime.now().strftime('%d.%-m.%Y')
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+PATH_OF_GIT_REPO = fr'{dname}/.git'  # make sure .git folder is properly configured
 COMMIT_MESSAGE = f'{today_date} update'
 
 def git_push():

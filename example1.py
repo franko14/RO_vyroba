@@ -331,20 +331,20 @@ fig.update_layout(title={'text' : 'RO wind forecast',
                 shapes=[
                 go.layout.Shape(
                                 type = 'line',
-                                x0 = '2020-03-02 0:00',
-                                y0 = 0,
-                                x1 = '2020-03-02 0:00',
-                                #yref  = 'paper',
-                                y1 = 5,
-                                line=dict(color = 'darkgreen', width=2),
-                                ),
-                go.layout.Shape(
-                                type = 'line',
                                 x0 = '2020-03-09 0:00',
                                 y0 = 0,
                                 x1 = '2020-03-09 0:00',
                                 #yref  = 'paper',
-                                y1 = 5,
+                                y1 = 50,
+                                line=dict(color = 'darkgreen', width=2),
+                                ),
+                go.layout.Shape(
+                                type = 'line',
+                                x0 = '2020-03-16 0:00',
+                                y0 = 0,
+                                x1 = '2020-03-16 0:00',
+                                #yref  = 'paper',
+                                y1 = 50,
                                 line=dict(color = 'darkgreen', width=2),
                                 )]
                 )

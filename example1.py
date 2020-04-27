@@ -32,7 +32,7 @@ my_config_file = 'config.ini'
 # Choose one of the available regions bys using its abbreviation
 # as shown on the top of each wattsight page
 # (eg https://app.wattsight.com/#tab/power/135/2)
-region = 'ro'
+region = 'de'
 #test_images = test_images.reshape((10000,28*28))
 #test_images = test_images.astype('float32')/255
 # choose one of the four possible categories for this plot:
@@ -59,11 +59,10 @@ category = 'wnd'
 freq = 'H'
 func = 'AVERAGE'
 
-# get current dates and timeranges to get data
 now = pd.Timestamp.now()
 today = now.floor('D')
 yesterday = today - pd.Timedelta(days=0)
-end = today + pd.Timedelta(days=15)
+end = today + pd.Timedelta(hours=180)
 
 # create the first part of the curve name dependent on the category and region
 if category == 'con':
@@ -88,7 +87,10 @@ curve_normal = session.get_curve(name=curve_part1+' mwh/h '+tz+' min15 n')
 normal = curve_normal.get_data(data_from=yesterday, data_to=end,
                                function=func, frequency=freq)
 # convert to pandas Series, convert from MWh/h to GWh/h by dividing by 1000
-normal = normal.to_pandas(name='Normal')/1000
+normal = normal.to_pandas(name='Normal')
+#normal =
+print (normal)
+#print (yesterday,end)
 
 # get most recent actual data
 curve_actual = session.get_curve(name=curve_part1+' mwh/h '+tz+' min15 a')
@@ -179,7 +181,8 @@ else:
     EC00Ens_avg = EC00Ens['EC00Ens_Avg']
     # Add a name based on the issue date
     EC00Ens_avg.name = 'EC00Ens ' + EC00Ens_idate[8:10] + '.' + EC00Ens_idate[5:7]
-
+#print (EC00Ens_avg)
+#exit()
 ## get EC12Ens data and issue date
 # get the curve, create curve name based on category, region and timezone
 curve_EC12Ens = session.get_curve(name=curve_part1+' ec12ens mwh/h '+tz+' min15 f')
@@ -331,21 +334,21 @@ fig.update_layout(title={'text' : 'RO wind forecast',
                 shapes=[
                 go.layout.Shape(
                                 type = 'line',
-                                x0 = '2020-03-09 0:00',
+                                x0 = '2020-05-04 0:00',
                                 y0 = 0,
-                                x1 = '2020-03-09 0:00',
+                                x1 = '2020-05-04 0:00',
                                 #yref  = 'paper',
                                 y1 = 50,
                                 line=dict(color = 'darkgreen', width=2),
                                 ),
                 go.layout.Shape(
                                 type = 'line',
-                                x0 = '2020-03-16 0:00',
+                                x0 = '2020-05-11 0:00',
                                 y0 = 0,
-                                x1 = '2020-03-16 0:00',
+                                x1 = '2020-05-11 0:00',
                                 #yref  = 'paper',
                                 y1 = 50,
-                                line=dict(color = 'darkgreen', width=2),
+                                line=dict(color = 'darkgreen', width=2)
                                 )]
                 )
 

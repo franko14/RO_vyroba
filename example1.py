@@ -32,7 +32,7 @@ my_config_file = 'config.ini'
 # Choose one of the available regions bys using its abbreviation
 # as shown on the top of each wattsight page
 # (eg https://app.wattsight.com/#tab/power/135/2)
-region = 'de'
+region = 'ro'
 #test_images = test_images.reshape((10000,28*28))
 #test_images = test_images.astype('float32')/255
 # choose one of the four possible categories for this plot:

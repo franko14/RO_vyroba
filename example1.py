@@ -62,7 +62,7 @@ func = 'AVERAGE'
 now = pd.Timestamp.now()
 today = now.floor('D')
 yesterday = today - pd.Timedelta(days=0)
-end = today + pd.Timedelta(hours=180)
+end = today + pd.Timedelta(days=15)
 
 # create the first part of the curve name dependent on the category and region
 if category == 'con':
